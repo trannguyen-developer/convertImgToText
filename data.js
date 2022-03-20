@@ -12,5 +12,5 @@ const dataImgDefault = [
   { id: 11, src: "./img/g11.jpg" },
   { id: 12, src: "./img/g12.jpg" },
   { id: 13, src: "./img/g13.jpg" },
-  { id: 14, src: "./img/g14.jpg" },
+  { id: 14, src: "./img/g14.webp" },
 ];

@@ -2,6 +2,7 @@ const textEl = document.querySelector(".text");
 const btnSay = document.querySelector(".btn-say");
 const input = document.querySelector(".input");
 const img = document.querySelector(".img");
+const inputEdit = document.querySelector(".edit");
 
 // img default
 const getNumberRandomDataImg = Math.floor(
@@ -10,14 +11,20 @@ const getNumberRandomDataImg = Math.floor(
 img.src = dataImgDefault[getNumberRandomDataImg].src;
 
 function converImgToText(imgLink) {
-  Tesseract.recognize(imgLink, "eng").then((out) => {
-    textEl.innerHTML = out.text;
-    machineSpeak(out.text);
+  Tesseract.recognize(imgLink, { lang: "eng", oem: 1, psm: 3 }).then((out) => {
+    const text = out.text.replace(/\n/g, " ").toLowerCase();
+    textEl.textContent = text;
+    machineSpeak(text);
+    inputEdit.value = text;
   });
 }
 
+inputEdit.addEventListener("input", (e) => {
+  textEl.textContent = e.target.value;
+});
+
 btnSay.addEventListener("click", async () => {
-  machineSpeak(textEl.innerHTML);
+  machineSpeak(textEl.textContent);
 });
 
 function machineSpeak(text) {
