@@ -2,7 +2,10 @@ const textEl = document.querySelector(".text");
 const btnSay = document.querySelector(".btn-say");
 const input = document.querySelector(".input");
 const img = document.querySelector(".img");
-const inputEdit = document.querySelector(".edit");
+const inputEdit = document.querySelector(".input-edit");
+const selectVoice = document.querySelector("#voice");
+const selectSpeed = document.querySelector("#speed-voice");
+const inputVolume = document.querySelector(".input-volume");
 
 // img default
 const getNumberRandomDataImg = Math.floor(
@@ -11,11 +14,11 @@ const getNumberRandomDataImg = Math.floor(
 img.src = dataImgDefault[getNumberRandomDataImg].src;
 
 function converImgToText(imgLink) {
-  Tesseract.recognize(imgLink, { lang: "eng", oem: 1, psm: 3 }).then((out) => {
-    const text = out.text.replace(/\n/g, " ").toLowerCase();
-    textEl.textContent = text;
-    machineSpeak(text);
-    inputEdit.value = text;
+  Tesseract.recognize(imgLink, "eng").then(({ data: { text } }) => {
+    const textT = text.replace(/\n/g, " ").toLowerCase();
+    textEl.textContent = textT;
+    machineSpeak(textT);
+    inputEdit.value = textT;
   });
 }
 
@@ -27,10 +30,15 @@ btnSay.addEventListener("click", async () => {
   machineSpeak(textEl.textContent);
 });
 
+// voice machine
 function machineSpeak(text) {
-  responsiveVoice.speak(text);
+  responsiveVoice.speak(text, selectVoice.value, {
+    volume: inputVolume.value,
+    rate: selectSpeed.value,
+  });
 }
 
+// paste img
 window.addEventListener("paste", (e) => {
   if (e.clipboardData.files.length > 0) {
     input.files = e.clipboardData.files;
@@ -41,6 +49,7 @@ window.addEventListener("paste", (e) => {
   converImgToText(e.clipboardData.files[0]);
 });
 
+// load img
 function setPreviewImage(file) {
   const fileReader = new FileReader();
   fileReader.readAsDataURL(file);

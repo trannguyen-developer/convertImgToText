@@ -13,17 +13,52 @@
     <div class="wrap-el">
       <button class="btn-say">Speak repeat</button>
     </div>
-    <div class="wrap-el">
+    <div class="wrap-el wrap-img-option">
       <img class="img" src="" alt="img" />
+      <div class="wrap-option">
+        <div class="option-item">
+          <span>Acction:</span>
+          <select name="voice" id="voice">
+            <option value="UK English Male">UK Male</option>
+            <option value="UK English Female">UK Female</option>
+            <option value="US English Male">US Male</option>
+            <option value="US English Female" selected="selected">
+              US Female
+            </option>
+          </select>
+        </div>
+        <div class="option-item">
+          <span>Speed:</span>
+          <select name="speed" id="speed-voice">
+            <option value="0.25">0.25</option>
+            <option value="0.5">0.5</option>
+            <option value="0.75">0.75</option>
+            <option value="1" selected="selected">1</option>
+            <option value="1.25">1.25</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div class="option-item">
+          <span>Volume:</span>
+          <input
+            class="input-volume"
+            type="range"
+            value="1"
+            step="0.1"
+            max="1"
+          />
+        </div>
+      </div>
     </div>
     <div class="wrap-el">
-      <input class="edit" type="text" />
+      <input class="input-edit" type="text" />
       <p class="text"></p>
     </div>
 
     <div class="wrap-el"></div>
     <script src="./data.js"></script>
-    <script src="./library/tesseract.1.0.10.js"></script>
+    <script src="./library/tesseract.2.1.5.js"></script>
     <script src="./library/responsivevoice.js"></script>
     <script src="./index.js"></script>
   </body>
