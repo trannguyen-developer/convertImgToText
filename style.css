@@ -1,0 +1,13 @@
+.wrap-el {
+  margin: 15px 0;
+}
+
+.input {
+  height: 40px;
+  width: 300px;
+  padding: 10px;
+}
+
+.text {
+  font-size: 20px;
+}

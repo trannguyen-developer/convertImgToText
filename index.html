@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./img/icon.jpg" />
+    <title>Read text images</title>
+  </head>
+  <body>
+    <h1>Read text images here</h1>
+    <input class="input" placeholder="Paste image here." type="text" />
+    <div class="wrap-el">
+      <button class="btn-say">Speak repeat</button>
+    </div>
+    <div class="wrap-el">
+      <img class="img" src="" alt="img" />
+    </div>
+    <div class="wrap-el">
+      <p class="text"></p>
+    </div>
+
+    <div class="wrap-el"></div>
+    <script src="./data.js"></script>
+    <script src="./library/tesseract.1.0.10.js"></script>
+    <script src="./library/responsivevoice.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
