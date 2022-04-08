@@ -15,7 +15,7 @@ img.src = dataImgDefault[getNumberRandomDataImg].src;
 
 function converImgToText(imgLink) {
   Tesseract.recognize(imgLink, "eng").then(({ data: { text } }) => {
-    const textT = text.replace(/\n/g, " ").toLowerCase();
+    const textT = text.replace(/\n/g, " ");
     textEl.textContent = textT;
     machineSpeak(textT);
     inputEdit.value = textT;
